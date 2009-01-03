@@ -1,6 +1,6 @@
---- #YAML:1.0
+---
 name: File-Type-WebImages
-version: 1.00
+version: 1.01
 author:
   - |-
     Paul Mison <pmison@fotango.com> - wrote original File::Type
@@ -15,9 +15,8 @@ requires:
 provides:
   File::Type::WebImages:
     file: lib/File/Type/WebImages.pm
-    version: 1.00
-generated_by: Module::Build version 0.2807
+    version: 1.01
+generated_by: Module::Build version 0.2806
 meta-spec:
-  url: |-
-    http://module-build.sourceforge.net/META-spec-v1.2.html
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

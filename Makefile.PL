@@ -2,14 +2,14 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
+          'PL_FILES' => {},
+          'INSTALLDIRS' => 'site',
           'NAME' => 'File::Type::WebImages',
+          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/File/Type/WebImages.pm',
           'PREREQ_PM' => {
-                           'IO::File' => '0.01',
-                           'Test::More' => '0.01'
-                         },
-          'INSTALLDIRS' => 'site',
-          'EXE_FILES' => [],
-          'PL_FILES' => {}
+                           'Test::More' => '0.01',
+                           'IO::File' => '0.01'
+                         }
         )
 ;

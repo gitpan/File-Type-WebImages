@@ -7,12 +7,13 @@ use vars '@EXPORT_OK';
 
 use IO::File;
 
-our $VERSION = "1.00";
+our $VERSION = "1.01";
 
 sub mime_type {
   # magically route argument
 
   my $argument = shift;
+  return undef unless defined $argument;
 
   if (length $argument > 1024 || $argument =~ m/\n/) {
     # assume it's data. Saves a stat call if the data's long
@@ -47,6 +48,8 @@ sub checktype_filename {
 sub checktype_contents {
   my $data = shift;
   my $substr;
+
+  return undef unless defined $data;
 
   if ($data =~ m[^\x89PNG]) {
     return q{image/png};

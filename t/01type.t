@@ -4,7 +4,7 @@ use strict;
 use lib './lib','../lib';
 
 use File::Type::WebImages;
-use Test::More;
+use Test::More 'no_plan';
 
 =for testing
 
@@ -19,8 +19,6 @@ my $types = {
   "files/blank.bmp"  => "image/bmp",
 };
 
-plan tests => 2 * scalar keys %{ $types };
-
 =for testing
 
 Initialise the object.
@@ -33,12 +31,16 @@ Loop over the objects, testing each both ways.
 
 =cut
 
-foreach my $filename (sort keys %$types) {
+for my $filename (sort keys %$types) {
   my $mimetype = $types->{$filename};
   is(File::Type::WebImages::checktype_filename("t/$filename"), $mimetype, "check file $filename");
   my $data = read_file("t/$filename") || die;
   is(File::Type::WebImages::checktype_contents($data), $mimetype, "check data $filename");
 }
+
+# edge cases
+is(File::Type::WebImages::checktype_contents(undef) , undef , "checktype_contents(undef) returns undef");
+is(File::Type::WebImages::checktype_contents('')    , undef , "checktype_contents('') returns undef");
 
 sub read_file {
   my $file = shift;
